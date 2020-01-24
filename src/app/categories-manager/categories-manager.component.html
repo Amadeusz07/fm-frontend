@@ -1,0 +1,35 @@
+<div class="edit">
+    <h3>Update Category</h3>
+    <mat-form-field>
+        <mat-label>Select a category</mat-label>
+        <mat-select 
+            [(value)]="selectedId" 
+            (selectionChange)="selectedCategoryChanged()">
+                <mat-option 
+                    *ngFor="let category of categories" 
+                    [value]="category._id"> {{ category.name }}
+                </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <div *ngIf="selectedCategory && !updateDone">
+        <mat-form-field>
+            <input matInput type="text" [(ngModel)]="selectedCategory.name"> 
+        </mat-form-field>
+        <button class="secondary-button" (click)="updateCategory()">Update</button>
+        <button class="secondary-button" (click)="resetCategory()">Reset</button>
+        <button class="danger-button" (click)="deleteCategory()">Delete</button>
+        <p class="error-message" *ngIf="updateError">{{ updateError }}</p>
+    </div>
+</div>
+
+<div class="add-new">
+    <h3>Add New Category</h3>
+    <mat-form-field>
+        <mat-label>Add Category</mat-label>
+        <input matInput type="text" [(ngModel)]="newCategoryName"> 
+    </mat-form-field>
+    <button class="secondary-button" (click)="addCategory()">Add</button>
+    <p class="error-message" *ngIf="addingError">{{ addingError }}</p>
+    <p class="success-message" *ngIf="addingInformation"> {{ addingInformation }}</p>
+</div>

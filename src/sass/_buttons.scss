@@ -1,0 +1,39 @@
+%default-button {
+    cursor: pointer;
+    border: 0;
+    box-shadow: 0;
+    font-weight: 700;
+    background-color: transparent;
+    outline: none;
+    margin: .5rem;
+    padding: .5rem;
+    box-sizing: border-box;
+    transition: .1s;
+    border-radius: 4px;
+    &:hover {
+        background-color: $color-secondary;
+    }
+    &:disabled {
+        color: $color-gray;
+        background-color: $color-gray-light;
+    }
+}
+.secondary-button {
+    @extend %default-button;
+    color: $color-primary;
+    &:hover {
+        color: $color-primary-strong;
+        &:disabled {
+            cursor: not-allowed;
+            color: $color-gray;
+            background-color: $color-gray-light;
+        }
+    }
+}
+.danger-button {
+    @extend %default-button;
+    color: $color-red-light;
+    &:hover {
+        color: $color-red-strong;
+    }
+}

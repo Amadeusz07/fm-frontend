@@ -1,0 +1,15 @@
+@import '../sass/styles.scss';
+
+.app {
+    margin: auto;
+    padding: auto;
+    height: 100vh;
+    width: 100%;
+    display: block;
+    position: relative;
+    .content {
+        margin-left: calc(15%);
+        height: 100%;
+        width: calc(85%);
+    }
+}
