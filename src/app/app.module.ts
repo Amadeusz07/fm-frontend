@@ -15,8 +15,14 @@ import { APIInterceptor } from './interceptors/api.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatSelectModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule
 } from '@angular/material';
+import { ChartsModule } from 'ng2-charts';
+import { PieChartComponent } from './shared/pie-chart/pie-chart.component';
+import { LineChartComponent } from './shared/line-chart/line-chart.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth-guard.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,10 @@ import {
     FastHistoryComponent,
     AddExpenseComponent,
     HomeComponent,
-    CategoriesManagerComponent
+    CategoriesManagerComponent,
+    PieChartComponent,
+    LineChartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +44,11 @@ import {
     FormsModule,
     BrowserAnimationsModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    ChartsModule
   ],
-  providers: [
+  providers: [ AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,

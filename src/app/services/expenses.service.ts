@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Expense } from '../models/expense.model';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpensesService {
+
+  public expenseAdded = new Subject();
 
   constructor(private http: HttpClient) { }
 

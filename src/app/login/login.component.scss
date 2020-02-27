@@ -1,0 +1,17 @@
+@import '../../sass/styles.scss';
+
+.login {
+    background-color: $color-secondary;
+    right: 0;
+    height: 100%;
+    width: calc(50%);
+    position: absolute;
+    text-align: right;
+    padding: 1rem;
+    div {
+        text-align: center;
+    }
+    .separator {
+        margin: 1rem;
+    }
+}

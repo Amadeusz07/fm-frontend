@@ -33,6 +33,7 @@ export class AddExpenseComponent implements OnInit {
           this.addingInformation = 'Added new expense successfully';
           form.reset();
           this.model.amount = 0;
+          this.expenseService.expenseAdded.next();
         }
       );
   }
