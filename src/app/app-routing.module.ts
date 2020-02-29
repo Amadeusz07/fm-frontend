@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { CategoriesManagerComponent } from './categories-manager/categories-manager.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './guards/auth-guard.interceptor';
+import { AuthGuard } from './services/auth-guard.service';
 
 
 const routes: Routes = [

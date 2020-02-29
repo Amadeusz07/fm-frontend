@@ -22,7 +22,7 @@ import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from './shared/pie-chart/pie-chart.component';
 import { LineChartComponent } from './shared/line-chart/line-chart.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './guards/auth-guard.interceptor';
+import { AuthGuard } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
