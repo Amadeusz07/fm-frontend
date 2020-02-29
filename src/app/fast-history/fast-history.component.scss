@@ -4,10 +4,11 @@
     height: 100%;
     width: 100%;
     .header {
+        text-transform: capitalize;
         height: auto;
         width: 100%;
-        // background-color: $color-primary;
-        color: $color-primary;
+        background-color: $color-primary;
+        color: $color-secondary-light;
         font-weight: 600;
         text-align: center;
         padding: 1rem;
@@ -29,7 +30,6 @@
     .content {
         height: 85%;
         width: 100%;
-        overflow: auto;
         table {
             width: 100%;
         }

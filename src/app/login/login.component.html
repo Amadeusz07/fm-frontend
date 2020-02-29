@@ -1,7 +1,7 @@
 <div class="login">
     <div>
         <h3>Log In</h3>
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
             <div>
                 <mat-form-field>
                     <mat-label for="name">Email</mat-label>
@@ -35,7 +35,7 @@
     </div>
     <div>
         <h3>Register</h3>
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister(registerForm)">
             <div>
                 <mat-form-field>
                     <mat-label for="name">Email</mat-label>
@@ -44,7 +44,8 @@
                         type="text" 
                         #name="ngModel" 
                         name="email" 
-                        [(ngModel)]="model.email"> 
+                        [(ngModel)]="registerModel.email"
+                        required> 
                 </mat-form-field>
             </div>
             <div>
@@ -55,13 +56,17 @@
                         type="password" 
                         #name="ngModel" 
                         name="password" 
-                        [(ngModel)]="model.password"> 
+                        [(ngModel)]="registerModel.password"
+                        required> 
                 </mat-form-field>
             </div>
             <button 
                 type="submit"
                 class="secondary-button"
-                [disabled]="!loginForm.form.valid">Register</button>
+                [disabled]="!registerForm.form.valid">Register</button>
+                <p *ngIf="registerLabel">
+                    {{ registerLabel }}
+                </p>
         </form>
     </div>
 </div>
