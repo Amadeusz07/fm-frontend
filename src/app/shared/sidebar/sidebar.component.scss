@@ -21,6 +21,21 @@
         list-style-type: none;
         .sidebar-list-item {
             margin: 1rem 0;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: .5s;
+            border-radius: 5px;
+            &:hover {
+                background-color: $color-primary-strong;
+            }
+        }
+        .inactive {
+            cursor: no-drop;
+            color: $color-gray;
         }
     }
 }
+// .inactive {
+//     cursor: no-drop;
+//     color: $color-gray;
+// }

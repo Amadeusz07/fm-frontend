@@ -37,4 +37,13 @@ export class AuthService {
             console.log(response);
         });
     }
+
+    public logout(): void {
+        this.http.post('logout', {}).subscribe(response => {
+            console.log(response);
+            this.router.navigate(['./login']);
+            localStorage.removeItem('token');
+            localStorage.removeItem('expDate');
+        });
+    }
 }

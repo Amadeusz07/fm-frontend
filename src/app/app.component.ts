@@ -9,10 +9,9 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
   title = 'finance-management';
   get isLoginPage() {
-    return !this.authService.isAuthenticated()
+    return !this.authService.isAuthenticated();
   }
   constructor(private authService: AuthService) {
-
   }
 
   ngOnInit() {
