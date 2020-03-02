@@ -36,6 +36,7 @@ export class CategoriesManagerComponent implements OnInit {
     this.updateDone = true;
     this.selectedCategory = null;
     this.selectedId = null;
+    this.updateError = '';
   }
 
   public updateCategory() {
@@ -56,7 +57,12 @@ export class CategoriesManagerComponent implements OnInit {
           this.resetCategory();
           this.getCategories();
         },
-        error => this.updateError = error
+        error => {
+          console.log(error);
+          if (error.status === 403) {
+            this.updateError = 'You cannot delete category that has expenses added';
+          }
+        }
       );
   }
 
