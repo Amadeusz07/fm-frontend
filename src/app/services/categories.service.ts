@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../models/category.model';
+import { CategorySummary } from '../models/categorySummary.model';
 
 @Injectable({
     providedIn: 'root'
@@ -30,4 +31,8 @@ export class CategoriesService {
     public DeleteCategory(category: Category): Observable<any> {
         return this.http.delete(`categories/${category._id}`);
     }
+
+    public GetSummaryByCategory(): Observable<CategorySummary[]> {
+        return this.http.get<CategorySummary[]>('categories/category-summary');
+      }
 }

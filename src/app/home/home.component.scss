@@ -12,19 +12,21 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 2fr; 
     grid-template-areas: 
-    "expense dashboard"
-    "history dashboard";
+    "dashboard dashboard"
+    "history expense";
     .dashboard-container {
         @extend %container-shared-defaults;
         grid-area: dashboard;
         box-sizing: border-box;;
-        margin: 2rem 2rem 2rem 0;
+        margin: 2rem 2rem 2rem 2rem;
+        text-align: center;
+        align-items: center;  
     }
     .history-container {
         @extend %container-shared-defaults;
         grid-area: history;
         margin: 2rem;
-        margin-top: 0;;
+        margin-top: 0;
         padding: 0;
         overflow: auto;
     }
@@ -32,5 +34,6 @@
         @extend %container-shared-defaults;
         grid-area: expense;
         margin: 2rem;
+        margin-top: 0;
     }
 }

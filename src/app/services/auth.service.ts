@@ -8,11 +8,12 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
   })
 export class AuthService {
-    public user: string = 'blek@blek.pl';
+    public user: string;
     /**
      *
      */
     constructor(private http: HttpClient, private router: Router) {
+        this.user = localStorage.getItem('userName');
     }
 
     public isAuthenticated(): boolean {
@@ -26,6 +27,7 @@ export class AuthService {
             if (response.token && response.expiresDate) {
                 localStorage.setItem('token', response.token.toString());
                 localStorage.setItem('expDate', response.expiresDate.toString());
+                localStorage.setItem('userName', email.toString());
                 logged = true;
                 this.router.navigate(['./dashboard/expenses']);
                 this.user = email;
@@ -45,6 +47,7 @@ export class AuthService {
             this.router.navigate(['./login']);
             localStorage.removeItem('token');
             localStorage.removeItem('expDate');
+            localStorage.removeItem('userName');
             this.user = '';
         });
     }
