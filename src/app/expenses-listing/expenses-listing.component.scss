@@ -2,16 +2,13 @@
 
 .listing-container {
     @extend %container-shared-defaults;
-
-    margin: 2rem;
-
     box-sizing: border-box;;
     height: calc(100%);
-    // .content {
-    //     height: 85%;
-    //     width: 100%;
-    //     table {
-    //         width: 100%;
-    //     }
-    // }
+    .content {
+        height: 85%;
+        width: 100%;
+        table {
+            width: 100%;
+        }
+    }
 }

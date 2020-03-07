@@ -7,7 +7,7 @@
                 {{ header }}
             <i class="fa fa-angle-right" (click)="moveDate(1)"></i>
         </h3>
-        <span class="see-all" routerLink="/expense-listing">See All</span>
+        <!-- <span class="see-all" routerLink="/expense-listing">See All</span> -->
     </div>
     <div class="content" *ngIf="!loading; else loader">
          <table mat-table [dataSource]="history">
