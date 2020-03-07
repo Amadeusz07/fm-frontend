@@ -5,7 +5,7 @@ import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { CategoriesManagerComponent } from './categories-manager/categories-manager.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth-guard.service';
-
+import { ExpensesListingComponent } from './expenses-listing/expenses-listing.component';
 
 const routes: Routes = [
   {
@@ -22,6 +22,11 @@ const routes: Routes = [
         component: CategoriesManagerComponent
       }
     ]
+  },
+  {
+    path: 'expense-listing',
+    component: ExpensesListingComponent,
+    canActivate: [AuthGuard]
   },
   { path: 'login', component: LoginComponent },
   { path: '', component: LoginComponent },

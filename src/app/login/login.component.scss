@@ -1,15 +1,34 @@
 @import '../../sass/styles.scss';
 
+.background-image {
+    background-image: url('../../assets/login_background.png');
+    background-size: 800px;
+    left: 0;
+    height: 100%;
+    width: calc(50%);
+    position: absolute;
+}
 .login {
-    background-color: $color-secondary;
+    background-color: white;
     right: 0;
     height: 100%;
     width: calc(50%);
     position: absolute;
     text-align: right;
-    padding: 1rem;
+    box-sizing: border-box;
+    >div {
+        margin-right: 1rem;
+        &:nth-child(1) {
+            @extend %container-shared-defaults;
+            margin-top: 1rem;
+        }
+        &:nth-child(3) {
+            @extend %container-shared-defaults;
+        }
+    }
     div {
         text-align: center;
+        padding: 1rem;
     }
     .separator {
         margin: 1rem;

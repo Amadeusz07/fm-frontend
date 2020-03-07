@@ -23,6 +23,7 @@ import { PieChartComponent } from './shared/pie-chart/pie-chart.component';
 import { LineChartComponent } from './shared/line-chart/line-chart.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { ExpensesListingComponent } from './expenses-listing/expenses-listing.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthGuard } from './services/auth-guard.service';
     CategoriesManagerComponent,
     PieChartComponent,
     LineChartComponent,
-    LoginComponent
+    LoginComponent,
+    ExpensesListingComponent
   ],
   imports: [
     BrowserModule,

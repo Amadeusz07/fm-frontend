@@ -1,9 +1,13 @@
 <div class="fast-history">
     <div class="header">
         <h3>
-            <i class="fa fa-angle-left"></i>{{ header }}<i class="fa fa-angle-right"></i>
+            <i class="fa fa-angle-left" 
+                (click)="moveDate(-1)">
+            </i>
+                {{ header }}
+            <i class="fa fa-angle-right" (click)="moveDate(1)"></i>
         </h3>
-        <span class="see-all">See All</span>
+        <span class="see-all" routerLink="/expense-listing">See All</span>
     </div>
     <div class="content" *ngIf="!loading; else loader">
          <table mat-table [dataSource]="history">

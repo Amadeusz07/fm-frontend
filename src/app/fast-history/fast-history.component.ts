@@ -20,9 +20,9 @@ export class FastHistoryComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.expensesSubscription = this.expensesService.expenseAdded.subscribe(_ => this.getLastHistory());
-    this.getLastHistory();
     this.currentDate = new Date();
-    this.header =  this.currentDate.toLocaleString('default', { month: 'long' });
+    this.header =  this.currentDate.toLocaleString('en-EN', { month: 'long' });
+    this.getLastHistory();
   }
 
   ngOnDestroy() {
@@ -30,11 +30,17 @@ export class FastHistoryComponent implements OnInit, OnDestroy {
   }
 
   private getLastHistory() {
-    this.expensesService.getLastHistory(10).subscribe(expenses => {
+    this.expensesService.getLastHistory(10, this.currentDate).subscribe(expenses => {
       this.history = expenses;
       this.loading = false;
       this.history.forEach(element => element.addedDateString = new Date(element.addedDate).toLocaleDateString());
     });
+  }
+
+  public moveDate(toChange: number) {
+    this.currentDate.setMonth(this.currentDate.getMonth() + toChange);
+    this.header =  this.currentDate.toLocaleString('en-EN', { month: 'long' });
+    this.getLastHistory();
   }
 
 }
