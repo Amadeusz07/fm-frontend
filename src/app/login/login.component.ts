@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       .pipe(
         tap(
           data => null,
-          error => this.registerLabel = 'Error occured'
+          error => this.registerLabel = 'Username is already taken'
         )
       )
       .subscribe(response => {
@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
       });
 
     form.reset();
+    form.resetForm();
   }
 
 }
