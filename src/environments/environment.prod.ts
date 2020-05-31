@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://new-url'
+  apiUrl: 'https://fmanagement-api.azurewebsites.net'
 };
