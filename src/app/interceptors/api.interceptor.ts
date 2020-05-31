@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class APIInterceptor implements HttpInterceptor {
@@ -18,7 +19,7 @@ export class APIInterceptor implements HttpInterceptor {
         }
         // headers = headers.append('Content-Type', 'application/json');
         const apiReq = req.clone({
-            url: `http://localhost:8080/${req.url}`,
+            url: `${environment.apiUrl}/${req.url}`,
             headers
           });
 
