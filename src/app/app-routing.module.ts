@@ -6,6 +6,7 @@ import { CategoriesManagerComponent } from './categories-manager/categories-mana
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { ExpensesListingComponent } from './expenses-listing/expenses-listing.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
   {
     path: 'expense-listing',
     component: ExpensesListingComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'projects',
+    component: ProjectsComponent,
     canActivate: [AuthGuard]
   },
   { path: 'login', component: LoginComponent },

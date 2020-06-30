@@ -16,7 +16,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatSelectModule,
   MatInputModule,
-  MatTableModule
+  MatTableModule,
+  MatButtonModule,
+  MatIconModule,
+  MatDialogModule
 } from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from './shared/pie-chart/pie-chart.component';
@@ -24,6 +27,9 @@ import { LineChartComponent } from './shared/line-chart/line-chart.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { ExpensesListingComponent } from './expenses-listing/expenses-listing.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { AddProjectDialogComponent } from './projects/add-project-dialog/add-project-dialog.component';
+import { UpdateProjectDialogComponent } from './projects/update-project-dialog/update-project-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,10 @@ import { ExpensesListingComponent } from './expenses-listing/expenses-listing.co
     PieChartComponent,
     LineChartComponent,
     LoginComponent,
-    ExpensesListingComponent
+    ExpensesListingComponent,
+    ProjectsComponent,
+    AddProjectDialogComponent,
+    UpdateProjectDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +57,9 @@ import { ExpensesListingComponent } from './expenses-listing/expenses-listing.co
     MatSelectModule,
     MatInputModule,
     MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
     ChartsModule
   ],
   providers: [ AuthGuard,
@@ -57,6 +69,7 @@ import { ExpensesListingComponent } from './expenses-listing/expenses-listing.co
       multi: true,
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddProjectDialogComponent, UpdateProjectDialogComponent]
 })
 export class AppModule { }

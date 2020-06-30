@@ -1,0 +1,41 @@
+@import '../../sass/styles.scss';
+
+.projects {
+    box-sizing: border-box;
+    height: calc(100%);
+    overflow: auto;
+    .projects-listing {
+        @extend %container-shared-defaults;
+        padding: 0;
+        margin: 2rem;
+        box-sizing: border-box;
+        .header {
+            // display: flex;
+            position: relative;
+            height: auto;
+            width: 100%;
+            background-color: $color-primary;
+            color: $color-secondary-light;
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem;
+            box-sizing: border-box;
+            .add-button {
+                position: absolute;
+                right: 0;
+                top: 0;
+                margin: 0.5rem 1rem;
+                .mat-mini-fab {
+                    background-color: $color-primary;
+                    color: $color-gray-light;
+                }
+            }
+        }
+        .listing {
+            width: 100%;
+            table {
+                width: 100%;
+            }
+        }
+    }
+}
