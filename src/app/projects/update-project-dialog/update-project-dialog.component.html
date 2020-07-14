@@ -46,5 +46,5 @@
 </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close class="secondary-button" (click)="onNoClick()">Cancel</button>
+  <button mat-button mat-dialog-close class="secondary-button" [mat-dialog-close]="isModified">Close</button>
 </mat-dialog-actions>

@@ -33,7 +33,9 @@ export class FastHistoryComponent implements OnInit, OnDestroy {
     this.expensesService.getLastHistory(10, this.currentDate).subscribe(expenses => {
       this.history = expenses;
       this.loading = false;
-      this.history.forEach(element => element.addedDateString = new Date(element.addedDate).toLocaleDateString());
+      if (this.history) {
+        this.history.forEach(element => element.addedDateString = new Date(element.addedDate).toLocaleDateString());
+      }
     });
   }
 

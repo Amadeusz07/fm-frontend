@@ -16,6 +16,7 @@ export class UpdateProjectDialogComponent implements OnInit {
   public unassignUsername = '';
   public errorMessage: string;
   public addingInformation: string;
+  public isModified = false;
 
   constructor(
     public dialogRef: MatDialogRef<UpdateProjectDialogComponent>,
@@ -32,11 +33,13 @@ export class UpdateProjectDialogComponent implements OnInit {
   }
 
   public changeName() {
+    this.isModified = true;
     this.projectsService.UpdateProject( { ...this.model, name: this.newName })
       .subscribe(_ => this.addingInformation = 'Project\'s name changed');
   }
 
   public assignUser() {
+    this.isModified = true;
     this.projectsService.AssignUser( { ...this.model }, this.assignUsername)
       .subscribe(
         _ => this.addingInformation = 'User assigned',
@@ -49,6 +52,7 @@ export class UpdateProjectDialogComponent implements OnInit {
   }
 
   public unassignUser() {
+    this.isModified = true;
     const toUnassign = this.model.assignedUsers.filter(user => user._id === this.unassignUsername);
     if (!toUnassign) {
       this.errorMessage = 'Error occured';

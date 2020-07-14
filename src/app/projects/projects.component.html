@@ -1,14 +1,17 @@
 <div class="projects">
 
-    <div class="projects-listing" *ngIf="!loading; else loader">
+    <div class="projects-listing">
         <div class="header">
             <h3>Your Projects</h3>
             <div class="add-button">
                 <button mat-mini-fab (click)="openDialogNewProject()"><mat-icon>add</mat-icon></button>
             </div>
         </div>
-        <div class="listing">
-            <table mat-table [dataSource]="projects">
+        <div class="listing" *ngIf="!loading; else loader">
+            <div class="message" *ngIf="errorProjects">
+                {{ errorProjects }}
+            </div>
+            <table mat-table [dataSource]="projects" *ngIf="!errorProjects">
                 <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef> Name </th>
                     <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
@@ -24,13 +27,41 @@
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef> </th>
                     <td mat-cell *matCellDef="let element">
-                        <button mat-button class="secondary-button" (click)="selectProject(element._id)">Select</button>
+                        <button mat-button class="secondary-button" [disabled]="element.disabled" (click)="selectProject(element._id)">Select</button>
                         <button mat-button class="secondary-button" (click)="openDialogEditProject(element)">Edit</button>
-                        <button mat-button class="danger-button" (click)="disableProject(element)">Disable</button>
+                        <button mat-button class="danger-button" [disabled]="element.disabled" (click)="disableProject(element)">Disable</button>
                     </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+    <div class="projects-listing">
+        <div class="header">
+            <h3>Assigned Projects</h3>
+        </div>
+        <div class="listing" *ngIf="!assignedLoading; else loader">
+            <div class="message" *ngIf="errorAssignedProjects">
+                {{ errorAssignedProjects }}
+            </div>
+            <table mat-table [dataSource]="assignedProjects" *ngIf="!errorAssignedProjects">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+                </ng-container>
+                <ng-container matColumnDef="addedDate">
+                    <th mat-header-cell *matHeaderCellDef> Added Date </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.addedDateString }} </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-button class="secondary-button" [disabled]="element.disabled" (click)="selectProject(element._id)">Select</button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsForAssigned"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsForAssigned;"></tr>
              </table>
         </div>
     </div>

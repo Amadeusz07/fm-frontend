@@ -24,14 +24,7 @@ export class AuthService {
     public login(email: string, password: string): boolean {
         let logged = false;
         this.http.post<any>('login', { email, password }).subscribe((response: TokenResponse) => {
-            if (response.token && response.expiresDate) {
-                localStorage.setItem('token', response.token.toString());
-                localStorage.setItem('expDate', response.expiresDate.toString());
-                localStorage.setItem('userName', email.toString());
-                logged = true;
-                this.router.navigate(['./dashboard/expenses']);
-                this.user = email;
-            }
+            logged = this.loginInWith(response.token, response.expiresDate, email);
         });
 
         return logged;
@@ -43,12 +36,32 @@ export class AuthService {
 
     public logout(): void {
         this.http.post<any>('logout', {}).subscribe(response => {
-            console.log(response);
             this.router.navigate(['./login']);
-            localStorage.removeItem('token');
-            localStorage.removeItem('expDate');
+            this.clearLocalStorage();
             localStorage.removeItem('userName');
             this.user = '';
         });
+    }
+
+    public loginInWith(token: string, expirationDate: Date, email?: string) {
+        if (token && expirationDate) {
+            localStorage.setItem('token', token.toString());
+            localStorage.setItem('expDate', expirationDate.toString());
+
+            this.router.navigate(['./dashboard/expenses']);
+            if (email) {
+                localStorage.removeItem('userName');
+                localStorage.setItem('userName', email.toString());
+                this.user = email;
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    public clearLocalStorage() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('expDate');
     }
 }

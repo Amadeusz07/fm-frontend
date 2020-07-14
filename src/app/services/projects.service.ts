@@ -14,6 +14,10 @@ export class ProjectsService {
         return this.http.get<Project[]>('/projects');
     }
 
+    public GetAssignedProjects(): Observable<Project[]> {
+        return this.http.get<Project[]>('/projects/assigned');
+    }
+
     public AddProject(project: Project): Observable<any> {
         return this.http.post('projects', project);
     }
@@ -32,5 +36,9 @@ export class ProjectsService {
 
     public UnAssignUser(project: Project, userId: string): Observable<any> {
         return this.http.post(`projects/${project._id}/unAssignUser`, { userId });
+    }
+
+    public SelectProject(projectId: string): Observable<any> {
+        return this.http.post('selectProject', { projectId });
     }
 }
