@@ -44,7 +44,7 @@ export class ProjectsComponent implements OnInit {
   public selectProject(id: string) {
     this.projectsService.SelectProject(id).subscribe((response: TokenResponse) => {
       this.authService.clearLocalStorage();
-      this.authService.loginInWith(response.token, response.expiresDate);
+      this.authService.loginInWith(response.token, response.expiresDate, response.username, response.projectId);
     });
   }
 

@@ -9,10 +9,14 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SidebarComponent implements OnInit {
 
   public username: string;
+  public projectName: string;
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.username = this.authService.user;
+    this.projectName = this.authService.projectName;
+    this.authService.usernameChanged.subscribe(username => this.username = username);
+    this.authService.projectNameChanged.subscribe(projectName => this.projectName = projectName);
   }
 
   public logout() {

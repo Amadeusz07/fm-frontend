@@ -10,6 +10,10 @@ export class ProjectsService {
 
     constructor(private http: HttpClient) { }
 
+    public GetProject(id: string): Observable<Project> {
+        return this.http.get<Project>(`/projects/${id}`);
+    }
+
     public GetProjects(): Observable<Project[]> {
         return this.http.get<Project[]>('/projects');
     }

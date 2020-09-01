@@ -1,17 +1,17 @@
 <div class="sidebar">
-    <h1>Project X</h1>
+    <h1>{{ projectName }}</h1>
     <h3>{{ username }}</h3>
     <ul class="sidebar-list">
         <li class="sidebar-list-item" routerLink="./projects">Manage Projects</li>
-        <li class="sidebar-list-item inactive">My profile</li>
+        <!-- <li class="sidebar-list-item inactive">My profile</li> -->
         <li class="sidebar-list-item" (click)="logout()">Log Out</li>
     </ul>
     <hr>
     <ul class="sidebar-list">
         <li class="sidebar-list-item" routerLink="./dashboard/expenses">Home</li>
-        <li class="sidebar-list-item inactive">Expense stats</li>
+        <!-- <li class="sidebar-list-item inactive">Expense stats</li> -->
         <li class="sidebar-list-item" routerLink="./dashboard/categories">Categories</li>
         <li class="sidebar-list-item" routerLink="./dashboard/expenses">Expenses</li>
-        <li class="sidebar-list-item inactive">Finances</li>
+        <!-- <li class="sidebar-list-item inactive">Finances</li> -->
     </ul>
 </div>
