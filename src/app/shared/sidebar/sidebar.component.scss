@@ -30,12 +30,8 @@
             }
         }
         .inactive {
-            cursor: no-drop;
+            pointer-events: none;
             color: $color-gray;
         }
     }
 }
-// .inactive {
-//     cursor: no-drop;
-//     color: $color-gray;
-// }

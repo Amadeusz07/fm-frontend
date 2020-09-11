@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
-import { Label, SingleDataSet, BaseChartDirective } from 'ng2-charts';
+import { Label, SingleDataSet, BaseChartDirective, Color } from 'ng2-charts';
 import { CategorySummary } from 'src/app/models/categorySummary.model';
 
 @Component({
@@ -21,14 +21,18 @@ export class PieChartComponent implements OnInit {
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
+  public pieChartColors = [
+    {
+      backgroundColor: ['#1f77b4', '#e377c2', '#ff7f0e', '#2ca02c', '#bcbd22', '#d62728',
+        '#17becf', '#9467bd', '#7f7f7f', '#8c564b', '#3366cc']
+    } as Color
+  ];
 
   constructor() { }
 
   ngOnInit() {
-    for (const expenses of this.data) {
-      this.pieChartLabels.push(expenses.categoryName);
-      this.pieChartData.push(expenses.sum);
-    }
+    this.pieChartLabels = this.data.map(element => element.categoryName);
+    this.pieChartData = this.data.map(element => element.sum);
   }
 
   public refresh(newData: CategorySummary[]) {
@@ -37,14 +41,7 @@ export class PieChartComponent implements OnInit {
     this.pieChartData = [];
     this.pieChartLabels = this.data.map(element => element.categoryName);
     this.pieChartData = this.data.map(element => element.sum);
-    // for (const expenses of this.data) {
-    //   this.pieChartLabels.push(expenses.categoryName);
-    //   this.pieChartData.push(expenses.sum);
-    // }
-    if (this.chart !== undefined) {
-      this.chart.ngOnDestroy();
-      this.chart.chart = this.chart.getChartBuilder(this.chart.ctx);
-    }
+    this.chart.update();
 
   }
 

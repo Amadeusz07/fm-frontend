@@ -8,10 +8,20 @@
     </ul>
     <hr>
     <ul class="sidebar-list">
-        <li class="sidebar-list-item" routerLink="./dashboard/expenses">Home</li>
+        <!-- <li class="sidebar-list-item"  routerLink="./dashboard/expenses">Home</li> -->
         <!-- <li class="sidebar-list-item inactive">Expense stats</li> -->
-        <li class="sidebar-list-item" routerLink="./dashboard/categories">Categories</li>
-        <li class="sidebar-list-item" routerLink="./dashboard/expenses">Expenses</li>
+        <li 
+            class="sidebar-list-item" 
+            [ngClass]="{ 'inactive': !projectSelected }" 
+            routerLink="./dashboard/categories">
+                Categories
+        </li>
+        <li 
+            class="sidebar-list-item" 
+            [ngClass]="{ 'inactive': !projectSelected }" 
+            routerLink="./dashboard/expenses">
+                Expenses
+        </li>
         <!-- <li class="sidebar-list-item inactive">Finances</li> -->
     </ul>
 </div>

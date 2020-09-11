@@ -13,6 +13,7 @@ export class ExpensesService {
   constructor(private http: HttpClient) { }
 
   public addExpense(expense: Expense): Observable<any> {
+    expense.amount = expense.amount
     return this.http.post('expenses', expense);
   }
 

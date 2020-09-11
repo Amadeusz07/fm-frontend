@@ -58,7 +58,8 @@ export class CategoriesManagerComponent implements OnInit {
           this.getCategories();
         },
         error => {
-          if (error.status === 403) {
+          console.log(error);
+          if (error.status === 406) {
             this.updateError = 'You cannot delete category that has expenses added';
           }
         }

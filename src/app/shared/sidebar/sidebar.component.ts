@@ -10,6 +10,9 @@ export class SidebarComponent implements OnInit {
 
   public username: string;
   public projectName: string;
+  public get projectSelected(): boolean {
+    return this.projectName != null && this.projectName !== '';
+  }
   constructor(private authService: AuthService) { }
 
   ngOnInit() {

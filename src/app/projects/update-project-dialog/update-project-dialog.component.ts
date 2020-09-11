@@ -44,6 +44,9 @@ export class UpdateProjectDialogComponent implements OnInit {
       .subscribe(
         _ => this.addingInformation = 'User assigned',
         error => {
+          if (error.status === 400) {
+            this.errorMessage = 'Can\'t assign owner';
+          }
           if (error.status === 404) {
             this.errorMessage = 'User not found';
           }
